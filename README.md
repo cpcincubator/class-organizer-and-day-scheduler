@@ -1,4 +1,4 @@
-# Class Organizer & Day Scheduler for DiU
+# Class Organizer & Day Scheduler for DiU ![PreBeta](https://img.shields.io/badge/v1.0-Alpha-blue?style=for-the-badge&logo=github)
 [![License: MPL v2.0](
 https://img.shields.io/badge/License-MPL%202.0-green)](https://github.com/cpcincubator/class-planner/)
 
