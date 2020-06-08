@@ -32,7 +32,7 @@ public abstract class RoutineDatabase extends RoomDatabase {
             value which leads to data inconsistency.
      */
 
-    static RoutineDatabase getInstance(final Context context){
+    public static RoutineDatabase getInstance(final Context context){
         if(routineDatabaseInstance == null) {
             routineDatabaseInstance = Room.databaseBuilder(context.getApplicationContext(),
                                         RoutineDatabase.class,
