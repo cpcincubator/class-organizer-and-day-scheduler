@@ -1,6 +1,7 @@
 package cpc.class_planner.sam.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -12,7 +13,7 @@ import cpc.class_planner.sam.data.RoutineDatabase;
 import cpc.class_planner.sam.model.Routine;
 import cpc.class_planner.sam.viewmodel.BaseActivityViewModel;
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends FragmentActivity {
     BaseActivityViewModel viewModel; // viewModel for this view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +26,8 @@ public class BaseActivity extends AppCompatActivity {
         Routine routine = new Routine("Saturday",
                 "8.30 AM", "10.00 PM", "Intro to OS", "OS121", "TEA", "101");
         viewModel.insert(routine);
+        // should be removed
+
+
     }
 }
