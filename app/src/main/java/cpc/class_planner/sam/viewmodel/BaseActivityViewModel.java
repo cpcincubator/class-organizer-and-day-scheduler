@@ -7,6 +7,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
+import java.util.List;
+
 import cpc.class_planner.sam.data.RoutineDao;
 import cpc.class_planner.sam.data.RoutineDatabase;
 import cpc.class_planner.sam.model.Routine;
@@ -34,6 +36,10 @@ public class BaseActivityViewModel extends AndroidViewModel {
             }
         });
         thread.start();
+    }
+
+    public List<Routine> getDailyRoutine(final String day){
+       return routineDao.getTodayRoutine(day);
     }
 
 }

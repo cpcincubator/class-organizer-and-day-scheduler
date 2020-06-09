@@ -2,6 +2,9 @@ package cpc.class_planner.sam.data;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.Query;
+
+import java.util.List;
 
 import cpc.class_planner.sam.model.Routine;
 
@@ -10,4 +13,7 @@ public interface RoutineDao {
 
     @Insert
     void insertData(Routine routine);
+
+    @Query("SELECT * FROM routine WHERE dayOfTheWeek LIKE :today ORDER BY startingTime")
+    List<Routine> getTodayRoutine(String today);
 }

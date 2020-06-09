@@ -33,7 +33,7 @@ public class BaseActivity extends FragmentActivity {
         // test methods
         Routine routine = new Routine("Saturday",
                 "8.30 AM", "10.00 PM", "Intro to OS", "OS121", "TEA", "101");
-        viewModel.insert(routine);
+        //viewModel.insert(routine);
         // should be removed
 
         // getting the fragment manager

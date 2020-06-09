@@ -10,14 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/routine_fragment">
-        <androidx.viewpager.widget.PagerTitleStrip
+        <androidx.viewpager.widget.PagerTabStrip
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:paddingTop="5dp"
             android:paddingBottom="10dp"
             android:id="@+id/fragment_title">
 
-        </androidx.viewpager.widget.PagerTitleStrip>
+        </androidx.viewpager.widget.PagerTabStrip>
+
 
     </androidx.viewpager.widget.ViewPager>
 

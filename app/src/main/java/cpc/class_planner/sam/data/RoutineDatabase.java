@@ -3,9 +3,11 @@ package cpc.class_planner.sam.data;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import cpc.class_planner.sam.model.Routine;
 
@@ -37,11 +39,37 @@ public abstract class RoutineDatabase extends RoomDatabase {
             routineDatabaseInstance = Room.databaseBuilder(context.getApplicationContext(),
                                         RoutineDatabase.class,
                                             databaseName)
+                                                .addCallback(roomCallBack)
+                                                .allowMainThreadQueries()
                                                 .build();
         }
 
         return routineDatabaseInstance;
     }
+
+    private static RoomDatabase.Callback roomCallBack = new RoomDatabase.Callback(){
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            final RoutineDao routineDao;
+            routineDao = routineDatabaseInstance.routineDao();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    routineDao.insertData(new Routine("Sunday","10.00 AM","11.30 AM","Management Information System","SE442","Imran Mahmud",null));
+                    routineDao.insertData(new Routine("Tuesday","10.00 AM","11.30 AM","Management Information System","SE442","Imran Mahmud",null));
+                    routineDao.insertData(new Routine("Sunday","11.30 AM","1.00 PM","Software Architecture & Design","SE323","Ms. Syeda Sumbul",null));
+                    routineDao.insertData(new Routine("Tuesday","4.00 PM","5.30 PM","Software Architecture & Design","SE323","Ms. Syeda Sumbul",null));
+                    routineDao.insertData(new Routine("Wednesday","1.00 PM","2.30 PM","Numerical Analysis","SE323","Ms. Syeda Sumbul",null));
+                    routineDao.insertData(new Routine("Thursday","2.30 PM","4.00 PM","Numerical Analysis","SE323","Ms. Syeda Sumbul",null));
+                    routineDao.insertData(new Routine("Tuesday","11.30 AM","1.00 PM","Web Design","SE323","Ms. Syeda Sumbul",null));
+                    routineDao.insertData(new Routine("Wednesday","11.30 AM","1.00 PM","Web Design","SE323","Ms. Syeda Sumbul",null));
+                    routineDao.insertData(new Routine("Tuesday","1.00 PM","1.00 PM","Web Design","SE323","Ms. Syeda Sumbul",null));
+                    routineDao.insertData(new Routine("Tuesday","2.30 PM","1.00 PM","Web Design","SE323","Ms. Syeda Sumbul",null));
+                }
+            }).start();
+        }
+    };
 
 }
 
