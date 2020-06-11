@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Class Organizer and Day Scheduler for DiU</string>
     <string name="class_starting_time">Class starting time:</string>
+    <string name="colon">:</string>
+    <string name="input_routine_set_time">Set time</string>
+    <string name="input_routine_zero">00</string>
+    <string name="input_routine_select_class_duration">Select class duration</string>
 </resources>

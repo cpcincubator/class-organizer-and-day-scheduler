@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,30 +18,40 @@ import androidx.lifecycle.ViewModelProviders;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cpc.class_planner.sam.R;
 import cpc.class_planner.sam.model.adapter.RoutineItemVIewAdapter;
 import cpc.class_planner.sam.view.BaseActivity;
 import cpc.class_planner.sam.viewmodel.BaseActivityViewModel;
 
 public class RoutineFragment extends Fragment {
+    @BindView(R.id.routine_no_class_bg)
+    ImageView noClassBg;
     BaseActivityViewModel viewModel;
-    String text;
+    private String dayOfTheWeek;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.routine_view_pager, container, false);
         viewModel = ViewModelProviders.of(this).get(BaseActivityViewModel.class);
-
-        /*These will be deleted */
+        ButterKnife.bind(this, view);
+        // TODO: Need the change the listView ID
         ListView listView = view.findViewById(R.id.sample_list_view);
-        List<Routine> routines = viewModel.getDailyRoutine(this.text);
+        // get the routine for today's day of the week
+        List<Routine> routines = viewModel.getDailyRoutine(this.dayOfTheWeek);
+        if(routines.size() == 0){
+            noClassBg.setVisibility(View.VISIBLE);
+        } else{
+            RoutineItemVIewAdapter adapter = new RoutineItemVIewAdapter((ArrayList<Routine>) routines, getContext());
+            listView.setAdapter(adapter);
+        }
         Log.d("TEST", "onCreateView: " + routines.toString());
-        RoutineItemVIewAdapter adapter = new RoutineItemVIewAdapter((ArrayList<Routine>) routines, getContext());
-        listView.setAdapter(adapter);
+
         return view;
     }
 
     public RoutineFragment(String text){
-        this.text = text;
+        this.dayOfTheWeek = text;
     }
 }

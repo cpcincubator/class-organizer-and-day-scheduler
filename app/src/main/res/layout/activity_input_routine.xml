@@ -1,20 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.InputRoutineActivity">
-    <com.google.android.material.textfield.TextInputLayout
+    android:orientation="vertical"
+    tools:context=".view.InputRoutineActivity"
+    android:padding="12dp">
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/class_starting_time">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:textSize="22sp"
+        android:text="@string/input_routine_select_class_duration">
+    </TextView>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/input_routine_starting_hour"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:enabled="false"
+            android:text="@string/input_routine_zero">
+        </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/colon">
+        </TextView>
+        <EditText
+            android:id="@+id/input_routine_starting_minute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/input_routine_zero">
+        </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="- ">
+        </TextView>
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <EditText
+            android:id="@+id/input_routine_ending_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/input_routine_zero">
+        </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/colon">
+        </TextView>
+        <EditText
+            android:id="@+id/input_routine_ending_minute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/input_routine_zero">
+        </EditText>
+        <Button
+            android:id="@+id/input_routine_set_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/input_routine_set_time">
+
+        </Button>
 
 
-</RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
