@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Class Organizer and Day Scheduler for DiU</string>
+    <string name="class_starting_time">Class starting time:</string>
 </resources>

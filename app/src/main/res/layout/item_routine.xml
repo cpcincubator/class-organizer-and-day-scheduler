@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_margin="4dp"
+    android:background="@drawable/back_repeat"
+    android:weightSum="5">
+    <!-- Course Time area -->
+    <TextView
+        android:id="@+id/item_routine_starting_time"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="12.30 AM"
+        android:textSize="24dp"
+        android:textColor="#fff"
+        android:background="@color/colorPrimary">
+
+    </TextView>
+    <!-- Course Name section -->
+    <LinearLayout
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/item_routine_course_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Introduction to Software Engineering"
+            android:textStyle="bold">
+
+        </TextView>
+        <!-- Course Code section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Course Code: "
+            android:textStyle="bold">
+        </TextView>
+            <TextView
+                android:id="@+id/item_routine_course_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" SE111"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
+
+        <!-- Course section and room area -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Section: "
+                android:textStyle="bold">
+
+            </TextView>
+            <TextView
+                android:id="@+id/item_routine_course_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:textColor="@color/design_default_color_primary_dark"
+                android:textStyle="bold">
+
+            </TextView>
+            <!-- Empty View -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Room: "
+                android:textStyle="bold">
+
+            </TextView>
+            <TextView
+                android:id="@+id/item_routine_course_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/design_default_color_primary_dark"
+                android:text=" 604AB"
+                android:textStyle="bold">
+
+            </TextView>
+        </LinearLayout>
+
+        <!-- Course Teacher section -->
+        <TextView
+            android:id="@+id/item_routine_course_teacher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Course Teacher: Dr. Towhid Bhuiya"
+            >
+
+        </TextView>
+        <!-- Pending task section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/item_routine_ic_alarm_on"
+        android:background="null"
+        android:layout_weight="1">
+
+    </ImageButton>
+
+
+</LinearLayout>
