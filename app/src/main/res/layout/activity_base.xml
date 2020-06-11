@@ -1,18 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.BaseActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="#D1E4F3"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="11:20"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:textColor="@color/primaryColor"
+                android:layout_gravity="center"
+                android:padding="2dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/subjPeriod_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Compiler Design"
+                        android:textStyle="bold"
+                        android:textSize="21sp"
+                        android:textColor="@color/primaryColor"/>
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/addAlertIc"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_add_alert"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignEnd="@id/subjPeriod_1"
+                        />
+                </RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Room: 318 DT-5"
+                    android:textSize="18sp"
+                    android:drawableLeft="@drawable/ic_room"
+                    android:drawablePadding="4dp"
+                    android:padding="2dp"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:background="@color/primaryColor"
+                    android:layout_gravity="bottom|right">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Details"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:drawableLeft="@drawable/ic_timeline"
+                        android:drawablePadding="5dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="#D1E4F3"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12:15"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:textColor="@color/primaryColor"
+                android:layout_gravity="center"
+                android:padding="2dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/subjPeriod_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Operating System"
+                        android:textStyle="bold"
+                        android:textSize="21sp"
+                        android:textColor="@color/primaryColor"/>
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/addAlertIc_2"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_add_alert"
+                        android:layout_alignParentRight="true"
+                        />
+                </RelativeLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Room: 802 DT-5"
+                    android:textSize="18sp"
+                    android:drawableLeft="@drawable/ic_room"
+                    android:drawablePadding="4dp"
+                    android:padding="2dp"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:background="@color/primaryColor"
+                    android:layout_gravity="bottom|right">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Details"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:drawableLeft="@drawable/ic_timeline"
+                        android:drawablePadding="5dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="#D1E4F3"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="01:40"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:textColor="@color/primaryColor"
+                android:layout_gravity="center"
+                android:padding="2dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/subjPeriod_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Database Management System"
+                        android:textStyle="bold"
+                        android:textSize="21sp"
+                        android:textColor="@color/primaryColor"/>
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/addAlertIc_3"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_add_alert"
+                        android:layout_alignParentRight="true"
+                        />
+                </RelativeLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Room: 802 DT-5"
+                    android:textSize="18sp"
+                    android:drawableLeft="@drawable/ic_room"
+                    android:drawablePadding="4dp"
+                    android:padding="2dp"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:background="@color/primaryColor"
+                    android:layout_gravity="bottom|right">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Details"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:drawableLeft="@drawable/ic_timeline"
+                        android:drawablePadding="5dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

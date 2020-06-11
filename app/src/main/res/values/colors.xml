@@ -3,4 +3,10 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="tabBackground">#00A9E9</color>
+    <color name="tabSelectedTextColor">#dddddd</color>
+    <color name="tavTextColor">#ffffff</color>
+
+    <color name="primaryColor">#00A3E7</color>
 </resources>
