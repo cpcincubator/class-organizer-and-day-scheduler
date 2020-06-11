@@ -32,7 +32,7 @@ public class BaseActivity extends FragmentActivity {
 
         // test methods
         Routine routine = new Routine("Saturday",
-                "8.30 AM", "10.00 PM", "Intro to OS", "OS121", "TEA", "101");
+                "8.30 AM", "10.00 PM", "Intro to OS", "OS121", "TEA", "101", 'A');
         //viewModel.insert(routine);
         // should be removed
 

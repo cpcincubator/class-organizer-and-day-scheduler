@@ -25,11 +25,13 @@ public class Routine {
     private String teacher;         // Professor who conducts the course
     @ColumnInfo
     private String roomNo;          // the room no that has been assigned for the course
+    @ColumnInfo
+    private char section;          // the room no that has been assigned for the course
 
     // constructor
 
 
-    public Routine(@NonNull String dayOfTheWeek, String startingTime, String endingTime, String courseTitle, String courseCode, String teacher, String roomNo) {
+    public Routine(@NonNull String dayOfTheWeek, String startingTime, String endingTime, String courseTitle, String courseCode, String teacher, String roomNo, char section) {
         this.dayOfTheWeek = dayOfTheWeek;
         this.startingTime = startingTime;
         this.endingTime = endingTime;
@@ -37,6 +39,7 @@ public class Routine {
         this.courseCode = courseCode;
         this.teacher = teacher;
         this.roomNo = roomNo;
+        this.section = section;
     }
 
     // Getters
@@ -72,6 +75,10 @@ public class Routine {
 
     public String getRoomNo() {
         return roomNo;
+    }
+
+    public char getSection() {
+        return this.section;
     }
 
     // Setter

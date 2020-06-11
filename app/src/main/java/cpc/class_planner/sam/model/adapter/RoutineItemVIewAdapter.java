@@ -50,8 +50,8 @@ public class RoutineItemVIewAdapter extends BaseAdapter {
             viewHolder.classStartingPeriod = (TextView) convertView.findViewById(R.id.item_routine_starting_time);
             viewHolder.courseName = (TextView) convertView.findViewById(R.id.item_routine_course_name);
             viewHolder.courseCode = (TextView) convertView.findViewById(R.id.item_routine_course_code);
-            viewHolder.courseSection = (TextView) convertView.findViewById(R.id.item_routine_course_code);
-            viewHolder.courseRoom = (TextView) convertView.findViewById(R.id.item_routine_course_section);
+            viewHolder.courseSection = (TextView) convertView.findViewById(R.id.item_routine_course_section);
+            viewHolder.courseRoom = (TextView) convertView.findViewById(R.id.item_routine_course_room);
             viewHolder.courseTeacher = (TextView) convertView.findViewById(R.id.item_routine_course_teacher);
 
         }
@@ -59,7 +59,7 @@ public class RoutineItemVIewAdapter extends BaseAdapter {
         viewHolder.classStartingPeriod.setText(routine.getStartingTime());
         viewHolder.courseName.setText(routine.getCourseTitle());
         viewHolder.courseCode.setText(routine.getCourseCode());
-        viewHolder.courseSection.setText(routine.getCourseCode());
+        viewHolder.courseSection.setText(String.valueOf(routine.getSection()));
         viewHolder.courseRoom.setText(routine.getRoomNo());
         viewHolder.courseTeacher.setText(routine.getTeacher());
 
