@@ -20,57 +20,57 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <EditText
+        <Spinner
             android:id="@+id/input_routine_starting_hour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
-            android:text="@string/input_routine_zero">
-        </EditText>
+            >
+        </Spinner>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/colon">
         </TextView>
-        <EditText
+        <Spinner
             android:id="@+id/input_routine_starting_minute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
-            android:text="@string/input_routine_zero">
-        </EditText>
+            >
+        </Spinner>
+        <Spinner
+            android:id="@+id/input_routine_starting_am_pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+        </Spinner>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="- ">
         </TextView>
 
-        <EditText
+        <Spinner
             android:id="@+id/input_routine_ending_hour"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:text="@string/input_routine_zero">
-        </EditText>
+            android:layout_height="wrap_content">
+        </Spinner>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/colon">
         </TextView>
-        <EditText
+        <Spinner
             android:id="@+id/input_routine_ending_minute"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:text="@string/input_routine_zero">
-        </EditText>
-        <Button
-            android:id="@+id/input_routine_set_time"
+            android:layout_height="wrap_content">
+        </Spinner>
+        <Spinner
+            android:id="@+id/input_routine_ending_am_pm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/input_routine_set_time">
+            >
+        </Spinner>
 
-        </Button>
 
 
     </LinearLayout>
