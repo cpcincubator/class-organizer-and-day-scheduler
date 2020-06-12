@@ -7,17 +7,27 @@
     android:orientation="vertical"
     tools:context=".view.InputRoutineActivity"
     android:padding="12dp">
+    <!--Day of the week section -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="22sp"
-        android:text="@string/input_routine_select_class_duration">
+        android:text="Day of the week">
+    </TextView>
+    <Spinner
+            android:id="@+id/input_routine_day_of_the_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+    </Spinner>
+    <!-- Starting Time Section -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/class_starting_time">
     </TextView>
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <Spinner
@@ -49,6 +59,21 @@
             android:text="- ">
         </TextView>
 
+
+
+
+
+    </LinearLayout>
+    <!-- Ending Time Section -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/class_starting_time">
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <Spinner
             android:id="@+id/input_routine_ending_hour"
             android:layout_width="wrap_content"
@@ -70,10 +95,104 @@
             android:layout_height="wrap_content"
             >
         </Spinner>
-
-
-
     </LinearLayout>
 
+    <!-- Course Title -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_routine_course_title"
+        android:layout_marginTop="@dimen/standard_input_field_gap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="clear_text"
+        android:hint="Course Title"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Course Code -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_routine_course_code"
+        android:layout_marginTop="@dimen/standard_input_field_gap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="clear_text"
+        android:hint="Course Code"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- Course Section -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_routine_course_section"
+        android:layout_marginTop="@dimen/standard_input_field_gap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="clear_text"
+        android:hint="Course Section"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- Course Code -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_routine_course_teacher"
+        android:layout_marginTop="@dimen/standard_input_field_gap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="clear_text"
+        android:hint="Course Teacher"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Course Code -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_routine_course_room"
+        android:layout_marginTop="@dimen/standard_input_field_gap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:endIconMode="clear_text"
+        android:hint="Associated Room"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Submit button -->
+    <Button
+        android:id="@+id/input_routine_btn_add_course"
+        android:layout_marginTop="@dimen/standard_input_field_gap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Add course"
+        />
 
 </LinearLayout>
