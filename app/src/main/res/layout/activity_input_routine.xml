@@ -99,7 +99,6 @@
 
     <!-- Course Title -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_routine_course_title"
         android:layout_marginTop="@dimen/standard_input_field_gap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -109,6 +108,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_routine_course_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -117,7 +117,6 @@
 
     <!-- Course Code -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_routine_course_code"
         android:layout_marginTop="@dimen/standard_input_field_gap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -127,6 +126,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_routine_course_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -134,7 +134,6 @@
     </com.google.android.material.textfield.TextInputLayout>
     <!-- Course Section -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_routine_course_section"
         android:layout_marginTop="@dimen/standard_input_field_gap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -144,6 +143,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_routine_course_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -151,7 +151,6 @@
     </com.google.android.material.textfield.TextInputLayout>
     <!-- Course Code -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_routine_course_teacher"
         android:layout_marginTop="@dimen/standard_input_field_gap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -161,6 +160,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_routine_course_teacher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -169,7 +169,6 @@
 
     <!-- Course Code -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_routine_course_room"
         android:layout_marginTop="@dimen/standard_input_field_gap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -179,6 +178,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_routine_course_room"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
