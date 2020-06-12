@@ -137,6 +137,18 @@ public class InputRoutineActivity extends AppCompatActivity {
         mClassEndingMinute = Integer.parseInt(arrMinute.get(position));
     }
 
+    // AM PM
+    @OnItemSelected(R.id.input_routine_starting_am_pm)
+    void reshapeStartingHour(Spinner spinner, int position) {
+        mClassStartingHour = position == 1 ? mClassStartingHour + 12 : mClassStartingHour;
+    }
+
+    // AM PM
+    @OnItemSelected(R.id.input_routine_starting_am_pm)
+    void reshapeEndingHour(Spinner spinner, int position) {
+        mClassEndingHour = position == 1 ? mClassEndingHour + 12 : mClassEndingHour;
+    }
+
     @OnClick(R.id.input_routine_btn_add_course)
     void insertNewRoutine(){
         mCourseTitle = courseTitle.getText().toString();
