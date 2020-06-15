@@ -19,4 +19,7 @@ public interface RoutineDao {
 
     @Query("SELECT DISTINCT courseTitle FROM routine")
     List<String> getCourseNames();
+
+    @Query("SELECT * FROM routine WHERE courseTitle = :courseTitle LIMIT 1")
+    Routine getRoutineByCourseName(String courseTitle);
 }

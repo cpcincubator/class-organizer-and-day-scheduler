@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -61,8 +62,6 @@ public class InputRoutineActivity extends AppCompatActivity {
     Spinner courseSelector;
     @BindView(R.id.input_routine_new_course_container)
     LinearLayout courseContainer;
-    @BindView(R.id.input_routine_btn_add)
-    Button btnAddRoutine;
 
     String[] arrDaysOfWeek = {"Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday"};
     // local variables
@@ -187,11 +186,18 @@ public class InputRoutineActivity extends AppCompatActivity {
     @OnItemSelected(R.id.input_routine_course_selector)
     void toggleCourseView(Spinner spinner, int position) {
         if(arrCourse.get(position).equalsIgnoreCase(createNew)){
-            courseContainer.setVisibility(View.VISIBLE);
-            btnAddRoutine.setVisibility(View.GONE);
+
         }else{
-            courseContainer.setVisibility(View.GONE);
-            btnAddRoutine.setVisibility(View.VISIBLE);
+         Routine routine = viewModel.getCourseByName(arrCourse.get(position));
+         try {
+             courseTitle.setText(routine.getCourseTitle());
+             courseCode.setText(routine.getCourseCode());
+             courseSection.setText(routine.getSection());
+             courseRoom.setText(routine.getRoomNo());
+             courseTeacher.setText(routine.getTeacher());
+         }catch (Exception e){
+             Log.e("TAG", "toggleCourseView: ", e);
+         }
         }
     }
 
