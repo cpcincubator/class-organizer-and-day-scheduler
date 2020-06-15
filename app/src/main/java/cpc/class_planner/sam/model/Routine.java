@@ -14,9 +14,9 @@ public class Routine {
     @ColumnInfo
     private String dayOfTheWeek;    // this is the day of the week. ie: Saturday
     @ColumnInfo
-    private String startingTime;    // the time when the class changes, data type may change in future
+    private int startingTime;    // the time when the class changes, data type may change in future
     @ColumnInfo
-    private String endingTime;      // time when class ends, ie: 10 PM
+    private int endingTime;      // time when class ends, ie: 10 PM
     @ColumnInfo
     private String courseTitle;     // Title of the course
     @ColumnInfo
@@ -31,7 +31,7 @@ public class Routine {
     // constructor
 
 
-    public Routine(@NonNull String dayOfTheWeek, String startingTime, String endingTime, String courseTitle, String courseCode, String teacher, String roomNo, String section) {
+    public Routine(@NonNull String dayOfTheWeek, int startingTime, int endingTime, String courseTitle, String courseCode, String teacher, String roomNo, String section) {
         this.dayOfTheWeek = dayOfTheWeek;
         this.startingTime = startingTime;
         this.endingTime = endingTime;
@@ -53,11 +53,11 @@ public class Routine {
         return dayOfTheWeek;
     }
 
-    public String getStartingTime() {
+    public int getStartingTime() {
         return startingTime;
     }
 
-    public String getEndingTime() {
+    public int getEndingTime() {
         return endingTime;
     }
 

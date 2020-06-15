@@ -42,4 +42,6 @@ public class InputActivityViewModel extends AndroidViewModel {
     public Routine getCourseByName(String courseTitle){
         return routineDao.getRoutineByCourseName(courseTitle);
     }
+
+
 }

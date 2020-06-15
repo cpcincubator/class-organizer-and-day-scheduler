@@ -1,6 +1,7 @@
 package cpc.class_planner.sam.data;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -22,4 +23,7 @@ public interface RoutineDao {
 
     @Query("SELECT * FROM routine WHERE courseTitle = :courseTitle LIMIT 1")
     Routine getRoutineByCourseName(String courseTitle);
+
+    @Delete
+    void deleteData(Routine routine);
 }

@@ -1,6 +1,8 @@
 package cpc.class_planner.sam.viewmodel;
 
+import android.app.AlertDialog;
 import android.app.Application;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -29,6 +31,19 @@ public class BaseActivityViewModel extends AndroidViewModel {
 
     public List<Routine> getDailyRoutine(final String day){
        return routineDao.getTodayRoutine(day);
+    }
+
+    public void delete(final Routine routine){
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                routineDao.deleteData(routine);
+            }
+        });
+        thread.start();
+
+
+
     }
 
 }

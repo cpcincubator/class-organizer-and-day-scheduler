@@ -4,15 +4,17 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:layout_margin="4dp"
+    android:padding="4dp"
     android:background="@drawable/back_repeat"
     android:weightSum="5">
     <!-- Course Time area -->
     <TextView
         android:id="@+id/item_routine_starting_time"
+        android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginVertical="10dp"
         android:layout_weight="1"
         android:text="12.30 AM"
         android:textSize="24dp"
@@ -117,23 +119,69 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/item_routine_action_modify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:minHeight="0dp"
+                android:drawableLeft="@drawable/ic_modify"
+                android:text="Modify"
+                android:background="@android:color/transparent"
+                >
+
+            </Button>
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
+            <Button
+                android:layout_gravity="right"
+                android:id="@+id/item_routine_action_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:drawableLeft="@drawable/ic_delete"
+                android:text="Delete"
+                android:background="@android:color/transparent"
+                >
 
+            </Button>
         </LinearLayout>
 
     </LinearLayout>
 
-    <ImageButton
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:src="@drawable/item_routine_ic_alarm_on"
         android:background="@null"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/item_routine_alarm_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/item_routine_ic_alarm_on">
+        </ImageButton>
+        <LinearLayout
+            android:id="@+id/item_routine_is_live"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+            <com.github.ybq.android.spinkit.SpinKitView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.Small.FoldingCube"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:SpinKit_Color="#228B22" />
+        </LinearLayout>
 
-    </ImageButton>
+
+    </LinearLayout>
 
 
 </LinearLayout>

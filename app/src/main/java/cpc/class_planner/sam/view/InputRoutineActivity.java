@@ -176,7 +176,7 @@ public class InputRoutineActivity extends AppCompatActivity {
         mCourseTeacher = courseTeacher.getText().toString();
         int courseStartInt = mClassStartingHour * 100 + mClassStartingMinute;
         int courseEndingInt = mClassEndingHour * 100 + mClassEndingMinute;
-        Routine routine = new Routine(dayOfTheWeek, String.valueOf(courseStartInt), String.valueOf(courseEndingInt),mCourseTitle,mCourseCode,mCourseTeacher
+        Routine routine = new Routine(dayOfTheWeek,courseStartInt, courseEndingInt,mCourseTitle,mCourseCode,mCourseTeacher
         ,mCourseRoom,mCourseSection);
         viewModel.insert(routine);
 

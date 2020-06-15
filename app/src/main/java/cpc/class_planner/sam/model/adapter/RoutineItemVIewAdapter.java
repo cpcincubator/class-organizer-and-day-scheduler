@@ -1,29 +1,48 @@
 package cpc.class_planner.sam.model.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import cpc.class_planner.sam.R;
 import cpc.class_planner.sam.model.Routine;
+import cpc.class_planner.sam.viewmodel.BaseActivityViewModel;
 
 public class RoutineItemVIewAdapter extends BaseAdapter {
     private ArrayList<Routine> dataSet; // list of data
     private static ViewHolder viewHolder;
     private LayoutInflater inflater; // Layout inflater
     Context context;
+    BaseActivityViewModel baseActivityViewModel;
+    // this calender will be used to show a live dot after the running class
+    Calendar calendar;
 
 
     // constructor
     public RoutineItemVIewAdapter(ArrayList<Routine> dataSet, Context context) {
         this.dataSet = dataSet;
         this.context = context;
+        baseActivityViewModel = ViewModelProviders.of((FragmentActivity) context).get(BaseActivityViewModel.class);
+        calendar = Calendar.getInstance();
     }
+
 
     @Override
     public int getCount() {
@@ -53,10 +72,49 @@ public class RoutineItemVIewAdapter extends BaseAdapter {
             viewHolder.courseSection = (TextView) convertView.findViewById(R.id.item_routine_course_section);
             viewHolder.courseRoom = (TextView) convertView.findViewById(R.id.item_routine_course_room);
             viewHolder.courseTeacher = (TextView) convertView.findViewById(R.id.item_routine_course_teacher);
+            viewHolder.courseNotification = (ImageView) convertView.findViewById(R.id.item_routine_alarm_icon);
+            viewHolder.courseDeleteBtn = (Button) convertView.findViewById(R.id.item_routine_action_delete);
+            viewHolder.courseLive = (LinearLayout) convertView.findViewById(R.id.item_routine_is_live);
+
+            viewHolder.courseDeleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("You sure you want to delete this? ");
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            baseActivityViewModel.delete(routine);
+                        }
+                    });
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                }
+            });
+
+
 
         }
         // setting everything up
-        viewHolder.classStartingPeriod.setText(routine.getStartingTime());
+        int stTime = routine.getStartingTime();
+        int stHour = stTime/100;
+        int stMinute = stTime%100;
+        String stTimeInFormat = "";
+        if(stHour <= 12){
+            stTimeInFormat = String.format("%02d : %02d AM", stHour, stMinute);
+        }else {
+            stTimeInFormat = String.format("%02d : %02d PM", stHour-12, stMinute);
+        }
+
+        // Test area
+        if(stHour >= calendar.get(Calendar.HOUR_OF_DAY) + 1 ) {
+            Log.d("TAG", "getView: " + calendar.get(Calendar.HOUR_OF_DAY));
+            viewHolder.courseLive.setVisibility(View.VISIBLE);
+        }
+
+
+        // test area
+        viewHolder.classStartingPeriod.setText(stTimeInFormat);
         viewHolder.courseName.setText(routine.getCourseTitle());
         viewHolder.courseCode.setText(routine.getCourseCode());
         viewHolder.courseSection.setText(String.valueOf(routine.getSection()));
@@ -68,6 +126,7 @@ public class RoutineItemVIewAdapter extends BaseAdapter {
     }
 
 
+
     private static class ViewHolder{
         TextView classStartingPeriod;
         TextView courseName;
@@ -75,5 +134,8 @@ public class RoutineItemVIewAdapter extends BaseAdapter {
         TextView courseSection;
         TextView courseRoom;
         TextView courseTeacher;
+        ImageView courseNotification;
+        Button courseDeleteBtn;
+        LinearLayout courseLive;
     }
 }
