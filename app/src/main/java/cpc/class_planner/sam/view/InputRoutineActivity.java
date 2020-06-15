@@ -8,8 +8,11 @@ import android.app.TimePickerDialog;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -54,6 +57,12 @@ public class InputRoutineActivity extends AppCompatActivity {
     EditText courseRoom;
     @BindView(R.id.input_routine_course_teacher)
     EditText courseTeacher;
+    @BindView(R.id.input_routine_course_selector)
+    Spinner courseSelector;
+    @BindView(R.id.input_routine_new_course_container)
+    LinearLayout courseContainer;
+    @BindView(R.id.input_routine_btn_add)
+    Button btnAddRoutine;
 
     String[] arrDaysOfWeek = {"Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday"};
     // local variables
@@ -69,6 +78,8 @@ public class InputRoutineActivity extends AppCompatActivity {
     private static String mCourseTeacher;
     private List<String> arrHour;
     private List<String> arrMinute;
+    private List<String> arrCourse;
+    private final String createNew = "-- CREATE NEW --";
     InputActivityViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +89,20 @@ public class InputRoutineActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         ArrayAdapter<String> adapterHour;
         ArrayAdapter<String> adapterMinute;
+        ArrayAdapter<String> adapterCourse;
         ArrayAdapter<CharSequence> adapter_am_pm;
         ArrayAdapter<CharSequence> adapterDayList;
         String[] arr_am_pm = {"AM","PM"};
         // creating instance
         arrHour = new ArrayList<>();
         arrMinute = new ArrayList<>();
+        arrCourse = new ArrayList<>();
         // populate the lists with data
         NumberFormat formatter = new DecimalFormat("00");
         for(int i=1;i<=12;i++) arrHour.add(formatter.format(i));
         for(int i=0;i<60;i+=5) arrMinute.add(formatter.format(i));
+        arrCourse = viewModel.getCourseList();
+        arrCourse.add(createNew);
         // assign those data to the spinner
         adapterHour = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, arrHour);
         adapterHour.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -97,6 +112,9 @@ public class InputRoutineActivity extends AppCompatActivity {
         adapter_am_pm.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         adapterDayList = new ArrayAdapter<CharSequence>(this,R.layout.support_simple_spinner_dropdown_item, arrDaysOfWeek);
         adapter_am_pm.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        adapterCourse = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, arrCourse);
+        adapterCourse.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+
         // Set those adapters with spinner
         classStartingHour.setAdapter(adapterHour);
         classEndingHour.setAdapter(adapterHour);
@@ -105,6 +123,7 @@ public class InputRoutineActivity extends AppCompatActivity {
         classStarting_AMPM.setAdapter(adapter_am_pm);
         classEnding_AMPM.setAdapter(adapter_am_pm);
         classAssociatedDay.setAdapter(adapterDayList);
+        courseSelector.setAdapter(adapterCourse);
     }
 
     // Load the day when a day is selected
@@ -162,6 +181,18 @@ public class InputRoutineActivity extends AppCompatActivity {
         ,mCourseRoom,mCourseSection);
         viewModel.insert(routine);
 
+    }
+
+    // course selector
+    @OnItemSelected(R.id.input_routine_course_selector)
+    void toggleCourseView(Spinner spinner, int position) {
+        if(arrCourse.get(position).equalsIgnoreCase(createNew)){
+            courseContainer.setVisibility(View.VISIBLE);
+            btnAddRoutine.setVisibility(View.GONE);
+        }else{
+            courseContainer.setVisibility(View.GONE);
+            btnAddRoutine.setVisibility(View.VISIBLE);
+        }
     }
 
 

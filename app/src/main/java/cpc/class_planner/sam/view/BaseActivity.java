@@ -7,10 +7,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cpc.class_planner.sam.R;
 import cpc.class_planner.sam.data.RoutineDao;
 import cpc.class_planner.sam.data.RoutineDatabase;
@@ -30,13 +32,17 @@ public class BaseActivity extends FragmentActivity {
         // bind view with the viewModel
         viewModel = ViewModelProviders.of(this).get(BaseActivityViewModel.class);
 
-        //viewModel.insert(routine);
-        // should be removed
-
-        // getting the fragment manager
+        // load the fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         RoutineViewAdapter routineViewAdapter = new RoutineViewAdapter(fragmentManager);
         viewPager.setAdapter(routineViewAdapter);
 
+    }
+
+
+    @OnClick(R.id.base_new_routine)
+    void loadInsertActivity(){
+        Intent intent = new Intent(this, InputRoutineActivity.class);
+        startActivity(intent);
     }
 }

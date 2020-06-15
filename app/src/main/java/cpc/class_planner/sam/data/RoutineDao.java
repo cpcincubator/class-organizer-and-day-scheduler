@@ -16,4 +16,7 @@ public interface RoutineDao {
 
     @Query("SELECT * FROM routine WHERE dayOfTheWeek LIKE :today ORDER BY startingTime")
     List<Routine> getTodayRoutine(String today);
+
+    @Query("SELECT DISTINCT courseTitle FROM routine")
+    List<String> getCourseNames();
 }

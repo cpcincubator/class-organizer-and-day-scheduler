@@ -6,6 +6,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
+import java.util.List;
+
 import cpc.class_planner.sam.data.RoutineDao;
 import cpc.class_planner.sam.data.RoutineDatabase;
 import cpc.class_planner.sam.model.Routine;
@@ -31,5 +33,9 @@ public class InputActivityViewModel extends AndroidViewModel {
             }
         });
         thread.start();
+    }
+
+    public List<String> getCourseList(){
+        return routineDao.getCourseNames();
     }
 }
