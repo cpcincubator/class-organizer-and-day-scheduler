@@ -36,7 +36,7 @@ public class SetupWizardActivityViewModel extends AndroidViewModel {
     }
 
     // Should have created an object instead
-    public void getRoutine(String year, String semester, String department, String batch, String section) {
+    public List<Routine> getRoutine(String year, String semester, String department, String batch, String section) {
         String URL = "http://smnshuvo.000webhostapp.com/cpc_getRoutine.php?year="+year+"&semester="+semester+"&department="+department+"&batch="+batch+"&section="+section;
         OkHttpClient httpClient = new OkHttpClient();
         Request routineRequest = new Request.Builder()
@@ -54,8 +54,7 @@ public class SetupWizardActivityViewModel extends AndroidViewModel {
         Gson gson = new Gson();
         Type type = new TypeToken<List<Routine>>(){}.getType();
         List<Routine> routines = gson.fromJson(responseText.trim(), type);
-        for (Routine r : routines) Log.d(TAG, "getRoutine: "+ r.getCourseTitle());
-        //return null;
+        return routines;
     }
 
     public List<String> getData(String query){
