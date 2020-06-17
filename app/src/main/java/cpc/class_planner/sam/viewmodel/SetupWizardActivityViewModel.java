@@ -6,14 +6,21 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import cpc.class_planner.sam.model.Routine;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -26,6 +33,29 @@ public class SetupWizardActivityViewModel extends AndroidViewModel {
     public SetupWizardActivityViewModel(@NonNull Application application) {
         super(application);
         this.application = application;
+    }
+
+    // Should have created an object instead
+    public void getRoutine(String year, String semester, String department, String batch, String section) {
+        String URL = "http://smnshuvo.000webhostapp.com/cpc_getRoutine.php?year="+year+"&semester="+semester+"&department="+department+"&batch="+batch+"&section="+section;
+        OkHttpClient httpClient = new OkHttpClient();
+        Request routineRequest = new Request.Builder()
+                .url(URL)
+                .build();
+        String responseText = "{}";
+        Response response; // I guess if the response is actually null it may lead some exception
+        try {
+            response = httpClient.newCall(routineRequest).execute();
+            responseText = response.body().string();
+            Log.d(TAG, "getRoutine: " + responseText);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Gson gson = new Gson();
+        Type type = new TypeToken<List<Routine>>(){}.getType();
+        List<Routine> routines = gson.fromJson(responseText.trim(), type);
+        for (Routine r : routines) Log.d(TAG, "getRoutine: "+ r.getCourseTitle());
+        //return null;
     }
 
     public List<String> getData(String query){

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -26,6 +27,7 @@ import butterknife.OnClick;
 import butterknife.OnItemClick;
 import butterknife.OnItemSelected;
 import cpc.class_planner.sam.R;
+import cpc.class_planner.sam.model.Routine;
 import cpc.class_planner.sam.viewmodel.BaseActivityViewModel;
 import cpc.class_planner.sam.viewmodel.SetupWizardActivityViewModel;
 import okhttp3.Call;
@@ -33,7 +35,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
+/**Cound't implement MVVM in this activity, code has became a mess*/
 public class SetupWizardActivity extends AppCompatActivity {
     @BindView(R.id.setup_wizard_spinner_year)
     Spinner iYearSpinner;
@@ -45,7 +47,7 @@ public class SetupWizardActivity extends AppCompatActivity {
     ArrayAdapter<String> adapterYear;
     String[] queries = {"Year","Semester", "Department", "Batch", "Section"};
     HashMap<String, String> myPreferences = new HashMap<String, String>();
-    private static int count = 0;
+    private static int count = -1;
     private static String mySelection;
     SetupWizardActivityViewModel viewModel;
     @Override
@@ -63,25 +65,41 @@ public class SetupWizardActivity extends AppCompatActivity {
 
 
     @OnItemSelected(R.id.setup_wizard_spinner_year)
-    void getRoutineYear(Spinner spinner, int position) {
+    void getSpinnerData(Spinner spinner, int position) {
         mySelection = spinner.getSelectedItem().toString();
+        Log.d("TAG", "getRoutineYear: " + mySelection);
     }
 
     @OnClick(R.id.setup_wizard_next_btn)
     void toggleNext(){
+        if(count>-1 && count<queries.length) myPreferences.put(queries[count],mySelection);
+        count++;
         if (count < queries.length) {
             getData(queries[count]);
             titleText.setText("My " + queries[count]);
-            myPreferences.put(queries[count],mySelection);
+            if(count == queries.length - 1){
+                nextButton.setText("Import");
+            }
+        } else{
+            titleText.setText(myPreferences.toString());
+            nextButton.setVisibility(View.GONE);
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        viewModel.getRoutine(myPreferences.get(queries[0]),
+                                myPreferences.get(queries[1]),
+                                myPreferences.get(queries[2]),
+                                myPreferences.get(queries[3]),
+                                myPreferences.get(queries[4])
+                        );
+                    } catch (Exception e){e.printStackTrace();}
+                }
+            });
+            t.start();
 
-        } else if(count == queries.length ){
-            nextButton.setText("Import");
 
-        } else {
-            nextButton.setClickable(false);
-            Log.d("HASH", "toggleNext: " + myPreferences.toString());
         }
-        count++;
     }
 
 
