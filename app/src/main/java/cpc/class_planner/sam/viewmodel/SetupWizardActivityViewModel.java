@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import cpc.class_planner.sam.data.RoutineDao;
+import cpc.class_planner.sam.data.RoutineDatabase;
 import cpc.class_planner.sam.model.Routine;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -30,8 +32,13 @@ import okhttp3.Response;
 public class SetupWizardActivityViewModel extends AndroidViewModel {
     private final String TAG = this.getClass().getSimpleName();
     private Application application;
+    private RoutineDao routineDao;
+    private RoutineDatabase database;
+
     public SetupWizardActivityViewModel(@NonNull Application application) {
         super(application);
+        database = RoutineDatabase.getInstance(application);
+        routineDao = database.routineDao();
         this.application = application;
     }
 
@@ -47,7 +54,7 @@ public class SetupWizardActivityViewModel extends AndroidViewModel {
         try {
             response = httpClient.newCall(routineRequest).execute();
             responseText = response.body().string();
-            Log.d(TAG, "getRoutine: " + responseText);
+            Log.d(TAG, "getRoutine - response: " + responseText);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -89,6 +96,12 @@ public class SetupWizardActivityViewModel extends AndroidViewModel {
         });
         return spinnerDataList;
 
+    }
+    public void insertAll(List<Routine> routines){
+        Log.d(TAG, "insertAll: " + routines.toString());
+        for(Routine rtn : routines)
+        {routineDao.insertData(rtn);
+            Log.d(TAG, "insertAll: " + rtn.getCourseTitle());}
     }
 
 

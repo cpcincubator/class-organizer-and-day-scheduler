@@ -52,8 +52,8 @@ public class RoutineFragment extends Fragment {
                     noClassBg.setVisibility(View.VISIBLE);
                 } else{
                     RoutineItemVIewAdapter adapter = new RoutineItemVIewAdapter((ArrayList<Routine>) routines, getContext());
-                    adapter.notifyDataSetChanged();
                     listView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
                 }
             }
         });

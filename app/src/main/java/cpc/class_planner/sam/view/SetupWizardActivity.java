@@ -89,20 +89,27 @@ public class SetupWizardActivity extends AppCompatActivity {
                 nextButton.setText("Import");
             }
         } else{
-            titleText.setText(myPreferences.toString());
+            titleText.setText("Importing routine....");
             nextButton.setVisibility(View.GONE);
-
+            progressBar.setVisibility(View.VISIBLE);
 
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        viewModel.getRoutine(myPreferences.get(queries[0]),
+                        viewModel.insertAll(viewModel.getRoutine(myPreferences.get(queries[0]),
                                 myPreferences.get(queries[1]),
                                 myPreferences.get(queries[2]),
                                 myPreferences.get(queries[3]),
                                 myPreferences.get(queries[4])
-                        );
+                        ));
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                // Exit the activity after importing data
+                                SetupWizardActivity.this.finish();
+                            }
+                        });
                     } catch (Exception e){e.printStackTrace();}
                 }
             });

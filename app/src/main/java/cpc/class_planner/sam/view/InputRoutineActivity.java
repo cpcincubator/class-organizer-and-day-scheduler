@@ -187,7 +187,11 @@ public class InputRoutineActivity extends AppCompatActivity {
     @OnItemSelected(R.id.input_routine_course_selector)
     void toggleCourseView(Spinner spinner, int position) {
         if(arrCourse.get(position).equalsIgnoreCase(createNew)){
-
+            courseTitle.setText("");
+            courseCode.setText("");
+            courseSection.setText("");
+            courseRoom.setText("");
+            courseTeacher.setText("");
         }else{
          Routine routine = viewModel.getCourseByName(arrCourse.get(position));
          try {

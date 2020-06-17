@@ -43,6 +43,10 @@ public class RoutineItemVIewAdapter extends BaseAdapter {
         calendar = Calendar.getInstance();
     }
 
+    public void setDataSet(ArrayList<Routine> dataSet) {
+        this.dataSet = dataSet;
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getCount() {
@@ -99,16 +103,21 @@ public class RoutineItemVIewAdapter extends BaseAdapter {
         int stTime = routine.getStartingTime();
         int stHour = stTime/100;
         int stMinute = stTime%100;
+        int enTime = routine.getEndingTime();
+        int enHour = enTime/100;
+        int enMinute = enTime%100;
         String stTimeInFormat = "";
         if(stHour <= 12){
             stTimeInFormat = String.format("%02d : %02d AM", stHour, stMinute);
         }else {
             stTimeInFormat = String.format("%02d : %02d PM", stHour-12, stMinute);
         }
-
-        // Test area
-        if(stHour >= calendar.get(Calendar.HOUR_OF_DAY) + 1 ) {
-            Log.d("TAG", "getView: " + calendar.get(Calendar.HOUR_OF_DAY));
+        if(stHour >= 12) stHour = stHour == 12 ? 0 : stHour- 12;
+        if(enHour >= 12) enHour=  enHour == 12 ? 0 : enHour - 12;
+        Log.d("TAG", "getView: " + calendar.get(Calendar.HOUR) + " " + calendar.get(Calendar.MINUTE));
+        // my hour starts from 1 and java's calender starts from 0
+        if(stHour <= calendar.get(Calendar.HOUR)  &&
+            enHour >= calendar.get(Calendar.HOUR)  ){
             viewHolder.courseLive.setVisibility(View.VISIBLE);
         }
 
