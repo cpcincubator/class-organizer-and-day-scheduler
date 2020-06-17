@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class BaseActivityViewModel extends AndroidViewModel {
     }
 
 
-    public List<Routine> getDailyRoutine(final String day){
+    public LiveData<List<Routine>> getDailyRoutine(final String day){
        return routineDao.getTodayRoutine(day);
     }
 

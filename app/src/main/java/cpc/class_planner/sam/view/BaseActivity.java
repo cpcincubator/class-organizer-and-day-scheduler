@@ -8,7 +8,11 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +40,19 @@ public class BaseActivity extends FragmentActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         RoutineViewAdapter routineViewAdapter = new RoutineViewAdapter(fragmentManager);
         viewPager.setAdapter(routineViewAdapter);
+        // Get today's date
+        int position = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            Date today = Calendar.getInstance().getTime();
+            position = today.getDay();
+            if(today.getHours() >= 22){ // load tomorrow's routine if user is checking after 10PM
+                position++;
+                Toast.makeText(this, "Loaded tomorrow's routine instead", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+        viewPager.setCurrentItem(position+1);
 
     }
 

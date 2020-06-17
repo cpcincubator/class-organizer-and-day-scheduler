@@ -179,6 +179,7 @@ public class InputRoutineActivity extends AppCompatActivity {
         Routine routine = new Routine(dayOfTheWeek,courseStartInt, courseEndingInt,mCourseTitle,mCourseCode,mCourseTeacher
         ,mCourseRoom,mCourseSection);
         viewModel.insert(routine);
+        this.finish(); // close the activity after data insertion is finished
 
     }
 

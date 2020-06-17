@@ -3,11 +3,14 @@ package cpc.class_planner.sam.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +46,9 @@ public class SetupWizardActivity extends AppCompatActivity {
     TextView titleText;
     @BindView(R.id.setup_wizard_next_btn)
     Button nextButton;
+    @BindView(R.id.progressbar)
+    ProgressBar progressBar;
+    Handler handler;
     // Adapter
     ArrayAdapter<String> adapterYear;
     String[] queries = {"Year","Semester", "Department", "Batch", "Section"};
@@ -57,6 +63,7 @@ public class SetupWizardActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(SetupWizardActivityViewModel.class);
         setContentView(R.layout.activity_setup_wizard);
         ButterKnife.bind(this);
+        handler = new Handler();
 
 
 
@@ -75,6 +82,7 @@ public class SetupWizardActivity extends AppCompatActivity {
         if(count>-1 && count<queries.length) myPreferences.put(queries[count],mySelection);
         count++;
         if (count < queries.length) {
+            progressBar.setVisibility(View.VISIBLE);
             getData(queries[count]);
             titleText.setText("My " + queries[count]);
             if(count == queries.length - 1){
@@ -83,6 +91,8 @@ public class SetupWizardActivity extends AppCompatActivity {
         } else{
             titleText.setText(myPreferences.toString());
             nextButton.setVisibility(View.GONE);
+
+
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -97,6 +107,7 @@ public class SetupWizardActivity extends AppCompatActivity {
                 }
             });
             t.start();
+
 
 
         }
@@ -120,6 +131,12 @@ public class SetupWizardActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 if(response.isSuccessful()){
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    });
                     String webResponse = response.body().string();
                     JSONArray jsonArray = null;
                     try {

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import java.util.ArrayList;
@@ -43,14 +44,20 @@ public class RoutineFragment extends Fragment {
         // TODO: Need the change the listView ID
         ListView listView = view.findViewById(R.id.sample_list_view);
         // get the routine for today's day of the week
-        List<Routine> routines = viewModel.getDailyRoutine(this.dayOfTheWeek);
-        if(routines.size() == 0){
-            noClassBg.setVisibility(View.VISIBLE);
-        } else{
-            RoutineItemVIewAdapter adapter = new RoutineItemVIewAdapter((ArrayList<Routine>) routines, getContext());
-            listView.setAdapter(adapter);
-        }
-        Log.d("TEST", "onCreateView: " + routines.toString());
+        //List<Routine> routines =
+        viewModel.getDailyRoutine(this.dayOfTheWeek).observe(this, new Observer<List<Routine>>() {
+            @Override
+            public void onChanged(List<Routine> routines) {
+                if(routines.size() == 0){
+                    noClassBg.setVisibility(View.VISIBLE);
+                } else{
+                    RoutineItemVIewAdapter adapter = new RoutineItemVIewAdapter((ArrayList<Routine>) routines, getContext());
+                    adapter.notifyDataSetChanged();
+                    listView.setAdapter(adapter);
+                }
+            }
+        });
+
 
         return view;
     }

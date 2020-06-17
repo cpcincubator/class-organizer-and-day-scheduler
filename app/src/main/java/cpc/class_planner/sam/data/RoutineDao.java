@@ -1,5 +1,6 @@
 package cpc.class_planner.sam.data;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -16,7 +17,7 @@ public interface RoutineDao {
     void insertData(Routine routine);
 
     @Query("SELECT * FROM routine WHERE dayOfTheWeek LIKE :today ORDER BY startingTime")
-    List<Routine> getTodayRoutine(String today);
+    LiveData<List<Routine>> getTodayRoutine(String today);
 
     @Query("SELECT DISTINCT courseTitle FROM routine")
     List<String> getCourseNames();
@@ -26,6 +27,7 @@ public interface RoutineDao {
 
     @Delete
     void deleteData(Routine routine);
+
     @Query("SELECT * FROM routine")
     List<Routine> getFullRoutine();
 }
