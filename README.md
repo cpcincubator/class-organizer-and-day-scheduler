@@ -4,7 +4,7 @@ https://img.shields.io/badge/License-MPL%202.0-green)(https://github.com/cpcincu
 
 ## Download
 
-[Click here to download](https://drive.google.com/file/d/1crNz4rSvS_L2ZntAE1TcjPO9F_b4Ivqz/view?usp=sharing) ![Download](https://img.shields.io/badge/Google%20Drive-blue)
+[Click here to download](https://drive.google.com/file/d/1MlTmG2U0Nh5RisWRn5rmvWDPToHCN81X/view?usp=sharing) ![Download](https://img.shields.io/badge/Google%20Drive-blue)
 
 ## Screenshots
 Get your routine in a window that is not hard for your eyes to find. Automatically loads the routine of current day and you get notified as well which class is live at this moment
