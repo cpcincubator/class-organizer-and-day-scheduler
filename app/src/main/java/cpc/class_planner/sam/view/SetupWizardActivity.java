@@ -3,7 +3,9 @@ package cpc.class_planner.sam.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -30,6 +32,7 @@ import butterknife.OnClick;
 import butterknife.OnItemClick;
 import butterknife.OnItemSelected;
 import cpc.class_planner.sam.R;
+import cpc.class_planner.sam.data.repo.CloudApi;
 import cpc.class_planner.sam.model.Routine;
 import cpc.class_planner.sam.viewmodel.BaseActivityViewModel;
 import cpc.class_planner.sam.viewmodel.SetupWizardActivityViewModel;
@@ -53,9 +56,11 @@ public class SetupWizardActivity extends AppCompatActivity {
     ArrayAdapter<String> adapterYear;
     String[] queries = {"Year","Semester", "Department", "Batch", "Section"};
     HashMap<String, String> myPreferences = new HashMap<String, String>();
-    private static int count = -1;
+    private int count = -1; // update: changed from static to class variable
     private static String mySelection;
     SetupWizardActivityViewModel viewModel;
+    private static final String SHARED_PREFERENCE = "class_organizer_by_smn";
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +69,9 @@ public class SetupWizardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setup_wizard);
         ButterKnife.bind(this);
         handler = new Handler();
-
-
+        sharedPreferences = getSharedPreferences(SHARED_PREFERENCE, Activity.MODE_PRIVATE);
+        Boolean isFirstTime = sharedPreferences.getBoolean("isFirstTime", true);
+        if(!isFirstTime) titleText.setText(R.string.when_ready);
 
     }
 
@@ -97,20 +103,33 @@ public class SetupWizardActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     try {
+                        // empty the database first
+                        viewModel.deleteAll();
+                        // populate the data now
                         viewModel.insertAll(viewModel.getRoutine(myPreferences.get(queries[0]),
                                 myPreferences.get(queries[1]),
                                 myPreferences.get(queries[2]),
                                 myPreferences.get(queries[3]),
                                 myPreferences.get(queries[4])
                         ));
+                        int latestVersion = new CloudApi().getVersion();
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
+                                // Save the current version number of the id if successful
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putInt("VERSION", latestVersion);
+                                editor.putBoolean("isFirstTime",false);
+                                editor.apply();
                                 // Exit the activity after importing data
+                                Toast.makeText(SetupWizardActivity.this, "Routine updated!", Toast.LENGTH_SHORT).show();
                                 SetupWizardActivity.this.finish();
                             }
                         });
-                    } catch (Exception e){e.printStackTrace();}
+                    } catch (Exception e){
+                        e.printStackTrace();
+                        Toast.makeText(SetupWizardActivity.this, "Error\n" + e.toString(), Toast.LENGTH_LONG).show();
+                    }
                 }
             });
             t.start();

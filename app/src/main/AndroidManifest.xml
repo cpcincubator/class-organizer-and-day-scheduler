@@ -23,6 +23,7 @@
             android:name=".view.InputRoutineActivity"
             android:exported="true" />
         <activity android:name=".view.BaseActivity"
+
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

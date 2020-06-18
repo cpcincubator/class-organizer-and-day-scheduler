@@ -30,4 +30,6 @@ public interface RoutineDao {
 
     @Query("SELECT * FROM routine")
     List<Routine> getFullRoutine();
+    @Query("DELETE FROM routine")
+    void deleteAll();
 }

@@ -104,5 +104,9 @@ public class SetupWizardActivityViewModel extends AndroidViewModel {
             Log.d(TAG, "insertAll: " + rtn.getCourseTitle());}
     }
 
+    public void deleteAll(){
+        routineDao.deleteAll();
+    }
+
 
 }
