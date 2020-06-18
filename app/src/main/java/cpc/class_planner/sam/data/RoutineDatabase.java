@@ -3,9 +3,11 @@ package cpc.class_planner.sam.data;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import cpc.class_planner.sam.model.Routine;
 
@@ -37,11 +39,28 @@ public abstract class RoutineDatabase extends RoomDatabase {
             routineDatabaseInstance = Room.databaseBuilder(context.getApplicationContext(),
                                         RoutineDatabase.class,
                                             databaseName)
+                                                .addCallback(roomCallBack)
+                                                .allowMainThreadQueries()
                                                 .build();
         }
 
         return routineDatabaseInstance;
     }
+
+    private static RoomDatabase.Callback roomCallBack = new RoomDatabase.Callback(){
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            final RoutineDao routineDao;
+            routineDao = routineDatabaseInstance.routineDao();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    routineDao.insertData(new Routine("Saturday",1000,1130,"Test Course","SE442","SMN Shuvo","Meet","Z"));
+                }
+            }).start();
+        }
+    };
 
 }
 

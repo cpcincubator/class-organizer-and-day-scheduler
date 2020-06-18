@@ -14,9 +14,9 @@ public class Routine {
     @ColumnInfo
     private String dayOfTheWeek;    // this is the day of the week. ie: Saturday
     @ColumnInfo
-    private String startingTime;    // the time when the class changes, data type may change in future
+    private int startingTime;    // the time when the class changes, data type may change in future
     @ColumnInfo
-    private String endingTime;      // time when class ends, ie: 10 PM
+    private int endingTime;      // time when class ends, ie: 10 PM
     @ColumnInfo
     private String courseTitle;     // Title of the course
     @ColumnInfo
@@ -25,11 +25,13 @@ public class Routine {
     private String teacher;         // Professor who conducts the course
     @ColumnInfo
     private String roomNo;          // the room no that has been assigned for the course
+    @ColumnInfo
+    private String section;          // the room no that has been assigned for the course
 
     // constructor
 
 
-    public Routine(@NonNull String dayOfTheWeek, String startingTime, String endingTime, String courseTitle, String courseCode, String teacher, String roomNo) {
+    public Routine(@NonNull String dayOfTheWeek, int startingTime, int endingTime, String courseTitle, String courseCode, String teacher, String roomNo, String section) {
         this.dayOfTheWeek = dayOfTheWeek;
         this.startingTime = startingTime;
         this.endingTime = endingTime;
@@ -37,6 +39,7 @@ public class Routine {
         this.courseCode = courseCode;
         this.teacher = teacher;
         this.roomNo = roomNo;
+        this.section = section;
     }
 
     // Getters
@@ -50,11 +53,11 @@ public class Routine {
         return dayOfTheWeek;
     }
 
-    public String getStartingTime() {
+    public int getStartingTime() {
         return startingTime;
     }
 
-    public String getEndingTime() {
+    public int getEndingTime() {
         return endingTime;
     }
 
@@ -72,6 +75,10 @@ public class Routine {
 
     public String getRoomNo() {
         return roomNo;
+    }
+
+    public String getSection() {
+        return this.section;
     }
 
     // Setter

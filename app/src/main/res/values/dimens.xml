@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="standard_input_field_gap">2dp</dimen>
+</resources>

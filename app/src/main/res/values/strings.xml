@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Class Organizer and Day Scheduler for DiU</string>
+    <string name="class_starting_time">Class starting time:</string>
+    <string name="colon">:</string>
+    <string name="input_routine_set_time">Set time</string>
+    <string name="input_routine_zero">00</string>
+    <string name="input_routine_select_class_duration">Select class duration</string>
+    <string name="add_routine">Add routine</string>
+    <string name="first_time_context">It seems this is the first time you are using this app.\nThis app need an active internet connection to fetch the data for the first.\nThe routine is populated with the love of users like you.\nIf you ever create routine feel free to upload it to the cloud\nShare this app to your friends for an easier routine\n\nClick next when you are ready.</string>
+    <string name="when_ready">Click next when you are ready</string>
 </resources>

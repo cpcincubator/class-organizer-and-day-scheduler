@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:padding="4dp"
+    android:background="@drawable/back_repeat"
+    android:weightSum="5">
+    <!-- Course Time area -->
+    <TextView
+        android:id="@+id/item_routine_starting_time"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="10dp"
+        android:layout_weight="1"
+        android:text="12.30 AM"
+        android:textSize="24dp"
+        android:textColor="#fff"
+        android:background="@drawable/routine_item_border">
+
+    </TextView>
+    <!-- Course Name section -->
+    <LinearLayout
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/item_routine_course_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Introduction to Software Engineering"
+            android:textStyle="bold">
+
+        </TextView>
+        <!-- Course Code section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Course Code: "
+            android:textStyle="bold">
+        </TextView>
+            <TextView
+                android:id="@+id/item_routine_course_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" SE111"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
+
+        <!-- Course section and room area -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Section: "
+                android:textStyle="bold">
+
+            </TextView>
+            <TextView
+                android:id="@+id/item_routine_course_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:textColor="@color/design_default_color_primary_dark"
+                android:textStyle="bold">
+
+            </TextView>
+            <!-- Empty View -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Room: "
+                android:textStyle="bold">
+
+            </TextView>
+            <TextView
+                android:id="@+id/item_routine_course_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/design_default_color_primary_dark"
+                android:text=" 604AB"
+                android:textStyle="bold">
+
+            </TextView>
+        </LinearLayout>
+
+        <!-- Course Teacher section -->
+        <TextView
+            android:id="@+id/item_routine_course_teacher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Course Teacher: Dr. Towhid Bhuiya"
+            >
+
+        </TextView>
+        <!-- Pending task section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/item_routine_action_modify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:minHeight="0dp"
+                android:drawableLeft="@drawable/ic_modify"
+                android:text="Modify"
+                android:background="@android:color/transparent"
+                >
+
+            </Button>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <Button
+                android:layout_gravity="right"
+                android:id="@+id/item_routine_action_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:drawableLeft="@drawable/ic_delete"
+                android:text="Delete"
+                android:background="@android:color/transparent"
+                >
+
+            </Button>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/item_routine_alarm_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/item_routine_ic_alarm_on">
+        </ImageButton>
+        <LinearLayout
+            android:id="@+id/item_routine_is_live"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+            <com.github.ybq.android.spinkit.SpinKitView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.Small.FoldingCube"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:SpinKit_Color="#228B22" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
