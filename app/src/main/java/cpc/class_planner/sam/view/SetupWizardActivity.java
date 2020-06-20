@@ -1,10 +1,12 @@
 package cpc.class_planner.sam.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -89,6 +91,7 @@ public class SetupWizardActivity extends AppCompatActivity {
         count++;
         if (count < queries.length) {
             progressBar.setVisibility(View.VISIBLE);
+            nextButton.setVisibility(View.INVISIBLE);
             getData(queries[count]);
             titleText.setText("My " + queries[count]);
             if(count == queries.length - 1){
@@ -116,11 +119,7 @@ public class SetupWizardActivity extends AppCompatActivity {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
-                                // Save the current version number of the id if successful
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putInt("VERSION", latestVersion);
-                                editor.putBoolean("isFirstTime",false);
-                                editor.apply();
+                                setSharedPreferences(latestVersion);
                                 // Exit the activity after importing data
                                 Toast.makeText(SetupWizardActivity.this, "Routine updated!", Toast.LENGTH_SHORT).show();
                                 SetupWizardActivity.this.finish();
@@ -137,6 +136,30 @@ public class SetupWizardActivity extends AppCompatActivity {
 
 
         }
+    }
+
+    @OnClick(R.id.setup_wizard_abort_btn)
+    void abortWizard(){
+        new AlertDialog.Builder(this)
+                .setTitle("Are your sure about aborting?")
+                .setMessage(getString(R.string.set_my_own))
+                .setPositiveButton("I'm Sure", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        setSharedPreferences(sharedPreferences.getInt("VERSION", 0));
+                        SetupWizardActivity.this.finish();
+                    }
+                })
+                .setNegativeButton("Abort", null)
+                .show();
+    }
+
+    public void setSharedPreferences(int latestVersion){
+        // Save the current version number of the id if successful
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("VERSION", latestVersion);
+        editor.putBoolean("isFirstTime",false);
+        editor.apply();
     }
 
 
@@ -160,7 +183,8 @@ public class SetupWizardActivity extends AppCompatActivity {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            progressBar.setVisibility(View.GONE);
+                            progressBar.setVisibility(View.INVISIBLE);
+                            nextButton.setVisibility(View.VISIBLE);
                         }
                     });
                     String webResponse = response.body().string();

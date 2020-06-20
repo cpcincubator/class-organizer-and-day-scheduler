@@ -51,11 +51,6 @@ public class CloudExportActivity extends AppCompatActivity {
             dataSet.put(fields[cursorPosition], inputField.getText().toString());
             inputField.setText("");
             if(cursorPosition+1<fields.length) textLabel.setText(fields[cursorPosition+1]); // code smell
-            if(fields[cursorPosition+1].equals("Year") || fields[cursorPosition+1].equals("Batch")){
-                inputField.setInputType(InputType.TYPE_CLASS_NUMBER);
-            }else{
-                inputField.setInputType(InputType.TYPE_CLASS_TEXT);
-            }
         } else{
             Log.d("TAG", "toggleNext: " + dataSet.toString());
 

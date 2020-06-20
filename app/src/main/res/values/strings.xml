@@ -8,4 +8,6 @@
     <string name="add_routine">Add routine</string>
     <string name="first_time_context">It seems this is the first time you are using this app.\nThis app need an active internet connection to fetch the data for the first.\nThe routine is populated with the love of users like you.\nIf you ever create routine feel free to upload it to the cloud\nShare this app to your friends for an easier routine\n\nClick next when you are ready.</string>
     <string name="when_ready">Click next when you are ready</string>
+    <string name="format_note">Please Follow this format\nYear:2020\nSemester: Spring\nDepartment: SWE\nBatch: 25\nSection: A</string>
+    <string name="set_my_own">If you don\'t see your routine up there, you can set your own routine</string>
 </resources>

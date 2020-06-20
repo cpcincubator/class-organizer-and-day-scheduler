@@ -6,6 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".view.SetupWizardActivity"
     android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?actionBarSize"
+        app:title="Class Organizer"
+        app:titleTextColor="#FFF"
+        android:background="#000">
+        <Button
+            android:id="@+id/setup_wizard_abort_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:backgroundTint="#880E4F"
+            android:text="Abort Processs">
+
+        </Button>
+
+    </androidx.appcompat.widget.Toolbar>
     <ProgressBar
         android:id="@+id/progressbar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -22,7 +41,8 @@
         android:layout_height="wrap_content"
         android:text="Welcome\nto the\nSetup Wizard!"
         android:textSize="46dp"
-        android:fontFamily="serif"
+        android:fontFamily="cursive"
+        android:textColor="@color/colorAccent"
         android:gravity="center">
     </TextView>
     <ScrollView
@@ -31,7 +51,7 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <!-- Year -->
