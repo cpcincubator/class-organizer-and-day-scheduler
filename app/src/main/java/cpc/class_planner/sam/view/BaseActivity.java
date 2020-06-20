@@ -52,9 +52,9 @@ public class BaseActivity extends FragmentActivity {
         ButterKnife.bind(this);
         updateHandler = new Handler();
         // Setting title and subtitle
-        toolbar.setTitle("Class Organizer");
+        toolbar.setTitle("Routine");
         toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setSubtitle("& Day Scheduler");
+        toolbar.setSubtitle("Manager");
         toolbar.setSubtitleTextColor(Color.WHITE);
         // bind view with the viewModel
         viewModel = ViewModelProviders.of(this).get(BaseActivityViewModel.class);
