@@ -17,7 +17,7 @@
         android:layout_marginVertical="10dp"
         android:layout_weight="1"
         android:text="12.30 AM"
-        android:textSize="24dp"
+        android:textSize="18sp"
         android:textColor="#fff"
         android:background="@drawable/routine_item_border">
 
