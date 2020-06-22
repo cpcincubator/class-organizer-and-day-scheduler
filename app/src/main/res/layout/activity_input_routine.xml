@@ -8,100 +8,7 @@
     tools:context=".view.InputRoutineActivity"
     android:padding="12dp">
     <!--Day of the week section -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Day of the week">
-    </TextView>
-    <Spinner
-            android:id="@+id/input_routine_day_of_the_week"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-    </Spinner>
-    <!-- Starting Time Section -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/class_starting_time">
-    </TextView>
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/input_routine_starting_hour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-        </Spinner>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/colon">
-        </TextView>
-        <Spinner
-            android:id="@+id/input_routine_starting_minute"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-        </Spinner>
-        <Spinner
-            android:id="@+id/input_routine_starting_am_pm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-        </Spinner>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="- ">
-        </TextView>
-
-
-
-
-
-    </LinearLayout>
-    <!-- Ending Time Section -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/class_starting_time">
-    </TextView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Spinner
-            android:id="@+id/input_routine_ending_hour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </Spinner>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/colon">
-        </TextView>
-        <Spinner
-            android:id="@+id/input_routine_ending_minute"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </Spinner>
-        <Spinner
-            android:id="@+id/input_routine_ending_am_pm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-        </Spinner>
-    </LinearLayout>
-    <Spinner
-        android:id="@+id/input_routine_course_selector"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </Spinner>
     <!-- Making it scrollable -->
 
     <ScrollView
@@ -114,6 +21,101 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Day of the week">
+        </TextView>
+        <Spinner
+            android:id="@+id/input_routine_day_of_the_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+        </Spinner>
+        <!-- Starting Time Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/class_starting_time">
+        </TextView>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/input_routine_starting_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+            </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/colon">
+            </TextView>
+            <Spinner
+                android:id="@+id/input_routine_starting_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+            </Spinner>
+            <Spinner
+                android:id="@+id/input_routine_starting_am_pm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+            </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- ">
+            </TextView>
+
+
+
+
+
+        </LinearLayout>
+        <!-- Ending Time Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/class_starting_time">
+        </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:id="@+id/input_routine_ending_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/colon">
+            </TextView>
+            <Spinner
+                android:id="@+id/input_routine_ending_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </Spinner>
+            <Spinner
+                android:id="@+id/input_routine_ending_am_pm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+            </Spinner>
+        </LinearLayout>
+        <Spinner
+            android:id="@+id/input_routine_course_selector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </Spinner>
 
 
     <!-- Course Title -->
