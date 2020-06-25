@@ -60,7 +60,7 @@ public class CloudExportActivity extends AppCompatActivity {
                         dataSet.get(fields[3]),
                         dataSet.get(fields[4]),
                         dataSet.get(fields[5]));
-                this.finish();
+              //  this.finish();
             Toast.makeText(this, "Routine submitted.", Toast.LENGTH_SHORT).show();
 
         }
